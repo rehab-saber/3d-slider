@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* Banner Section */
+.banner {
+    background-color: black;
+    background-image: url(photos/Beautiful\ Black\ Starry\ Background\ Material\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree\ \(1\).jpeg);
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Rotating Image Slider */
+.banner .slider {
+    position: absolute;
+    width: min(30vw, 200px);
+    height: min(35vw, 250px);
+    top: 10%;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-13deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-13deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+    translateZ(min(60vw, 400px));
+}
+
+.item img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Section */
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    width: min(90%, 1400px);
+    padding: 5vh 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    text-align: center;
+}
+
+/* Model Image */
+.banner .content .model {
+    background-image: url(photos/bb8b5988-cb64-43e2-986e-0e0933284ad5-removebg-preview.png);
+    width: 100%;
+    height: 70vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Heading Styles */
+.banner .content h1 {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 1em;
+    color: rgb(28, 28, 32);
+    position: relative;
+}
+
+.banner .content h1::after {
+    position: absolute;
+    inset: 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: clamp(1px, 0.3vw, 2px) white;
+    color: transparent;
+}
+
+/* Author */
+.banner .content .author {
+    font-family: poppins, sans-serif;
+    text-align: center;
+    max-width: 200px;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Subtitle */
+.banner .content h2 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
